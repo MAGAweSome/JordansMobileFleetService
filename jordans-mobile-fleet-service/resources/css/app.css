@@ -441,3 +441,24 @@ body {
         font-size: 1em;
     }
 }
+
+/* Footer Styles */
+.main-footer {
+    background-color: #333; /* Dark background, similar to navbar */
+    color: white; /* White text for contrast */
+    padding: 30px 20px; /* Padding above and below */
+    text-align: center; /* Center align text */
+    font-size: 0.9em;
+    margin-top: 50px; /* Space above the footer from the last section */
+}
+
+.footer-content p {
+    margin: 5px 0; /* Small margin between paragraphs */
+    line-height: 1.5;
+    color: #ccc; /* Slightly lighter white for a softer look */
+    padding: 0; /* Remove default section p padding */
+}
+
+.footer-content p:last-child {
+    margin-bottom: 0; /* No bottom margin on the last paragraph */
+}
