@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <a href="#home">
-                <img src="{{ asset('images/logo.png') }}" alt="Jordans Mobile Fleet Service Logo" class="logo">
-            </a>
-        </div>
-        <ul>
-            <li><a href="#about-us">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
     <section id="home" class="section">
         <h1>Welcome to Jordans Mobile Fleet Service!</h1>
         <p>Your reliable partner for all your trucking needs.</p>

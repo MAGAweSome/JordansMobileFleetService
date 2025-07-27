@@ -13,12 +13,25 @@
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="#home">
+                <img src="{{ asset('images/logo.png') }}" alt="Jordans Mobile Fleet Service Logo" class="logo">
+            </a>
+        </div>
+        <ul>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     @yield('content')
 
     <footer class="main-footer">
         <div class="footer-content">
             <p>&copy; {{ date('Y') }} Jordans Mobile Fleet Service. All rights reserved.</p>
-            <!-- <p>Built with &#10084; in Woodstock, Ontario, Canada.</p> -->
+            <p>Built with &#10084; in Woodstock, Ontario, Canada.</p>
         </div>
     </footer>
 
