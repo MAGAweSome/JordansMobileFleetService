@@ -168,3 +168,276 @@ body {
         max-width: 90%; /* Wider on small screens */
     }
 }
+
+/* Styles for About Us Section */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Center content within the container */
+}
+
+.about-intro {
+    margin-bottom: 40px;
+}
+
+.about-intro p {
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: #444;
+    font-weight: 400;
+}
+
+.about-cards {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+    justify-content: center; /* Center the cards */
+    gap: 30px; /* Space between cards */
+    margin-bottom: 50px;
+}
+
+.about-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px;
+    flex: 1 1 calc(33.333% - 40px); /* Approx 3 cards per row, accounting for gap */
+    max-width: 380px; /* Max width for individual cards */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: left; /* Text alignment within cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.about-card h3 {
+    color: #007bff; /* Blue for card titles */
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.about-card p {
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #555;
+    text-align: left; /* Ensure paragraphs within cards are left-aligned */
+    padding: 0; /* Remove default section p padding within cards */
+}
+
+.about-card ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.about-card ul li {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    color: #555;
+    position: relative;
+    padding-left: 25px; /* Space for custom bullet */
+    line-height: 1.6;
+}
+
+.about-card ul li:last-child {
+    margin-bottom: 0;
+}
+
+.about-card ul li::before {
+    content: "✔️"; /* Custom checkmark bullet */
+    position: absolute;
+    left: 0;
+    color: #28a745; /* Green for checkmark */
+    font-size: 1.1em;
+}
+
+.about-cta {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #f0f8ff; /* Light blue background */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.about-cta p {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+/* Responsive adjustments for About Us */
+@media (max-width: 992px) {
+    .about-card {
+        flex: 1 1 calc(50% - 30px); /* 2 cards per row on medium screens */
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-card {
+        flex: 1 1 100%; /* 1 card per row on small screens */
+        max-width: 100%; /* Fill available width */
+    }
+    .about-intro p, .about-cta p {
+        font-size: 1em;
+    }
+    .about-card h3 {
+        font-size: 1.4em;
+    }
+}
+
+.button {
+    display: inline-block;
+    background-color: #007bff; /* A nice blue */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for Contact Us Section */
+.contact-intro {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 1.1em;
+    color: #555;
+    text-align: center;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between contact cards */
+    margin-bottom: 50px;
+}
+
+.contact-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px 20px;
+    flex: 1 1 calc(33.333% - 40px); /* Roughly 3 cards per row */
+    max-width: 350px; /* Max width for each card */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically if cards have different heights */
+}
+
+.contact-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.contact-icon-wrapper {
+    background-color: #007bff; /* Blue background for icon */
+    color: white;
+    border-radius: 50%; /* Make it a circle */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 3em; /* Size of the icon */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.contact-card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-card p.contact-detail {
+    font-size: 1.2em;
+    margin: 0;
+    line-height: 1.5;
+    word-wrap: break-word; /* Ensures long emails wrap */
+}
+
+.contact-card p.contact-detail a {
+    color: #007bff; /* Blue for clickable links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card p.contact-detail a:hover {
+    text-decoration: underline;
+}
+
+.service-details-block {
+    background-color: #f8f8f8; /* Light grey background */
+    border-top: 1px solid #eee;
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 50px auto; /* Space above and below */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.service-details-block p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+    padding: 0; /* Remove default section p padding here */
+}
+
+.service-details-block strong {
+    color: #007bff; /* Blue for strong text in this block */
+}
+
+/* Responsive adjustments for Contact Us */
+@media (max-width: 992px) {
+    .contact-card {
+        flex: 1 1 calc(50% - 30px); /* 2 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-grid {
+        flex-direction: column; /* Stack contact cards vertically on small screens */
+    }
+    .contact-card {
+        flex: 1 1 100%; /* Full width on small screens */
+        max-width: 100%;
+        padding: 25px 15px;
+    }
+    .contact-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        font-size: 2.2em;
+        margin-bottom: 15px;
+    }
+    .contact-card h3 {
+        font-size: 1.3em;
+    }
+    .contact-card p.contact-detail {
+        font-size: 1em;
+    }
+    .service-details-block {
+        padding: 30px 15px;
+    }
+    .service-details-block p {
+        font-size: 1em;
+    }
+}
