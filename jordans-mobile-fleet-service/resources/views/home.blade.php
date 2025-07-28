@@ -1,9 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="home" class="section">
-        <h1>Welcome to Jordans Mobile Fleet Service!</h1>
-        <p>Your reliable partner for all your trucking needs.</p>
+    <section id="home" class="hero-section">
+        <div class="video-slideshow">
+            <video autoplay muted playsinline class="hero-video active" data-video-index="0">
+                <source src="{{ asset('videos/calipers.mp4') }}" type="video/mp4">
+            </video>
+            <video muted playsinline class="hero-video" data-video-index="1">
+                <source src="{{ asset('videos/tire_change.mp4') }}" type="video/mp4">
+            </video>
+            <video muted playsinline class="hero-video" data-video-index="2">
+                <source src="{{ asset('videos/tools_closeup.mp4') }}" type="video/mp4">
+            </video>
+            <video muted playsinline class="hero-video" data-video-index="3">
+                <source src="{{ asset('videos/truck_hood.mp4') }}" type="video/mp4">
+            </video>
+            <video muted playsinline class="hero-video" data-video-index="4">
+                <source src="{{ asset('videos/welding.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Jordans Mobile Fleet Service!</h1>
+            <p>Your reliable partner for on-site trucking solutions.</p>
+            <a href="#contact" class="button hero-button">Get a Free Quote!</a>
+        </div>
     </section>
 
     <section id="about-us" class="section">

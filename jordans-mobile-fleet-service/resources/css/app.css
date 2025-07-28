@@ -462,3 +462,155 @@ body {
 .footer-content p:last-child {
     margin-bottom: 0; /* No bottom margin on the last paragraph */
 }
+
+/* --- Home Section (Hero) Styles --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    /* Remove height: 80vh; here - the height will be determined by its content */
+    /* If you want the ENTIRE home section to be a certain height, you'll set it here,
+       but we want the video and content to flow. */
+    min-height: calc(100vh - 80px); /* Example: 100vh minus navbar height */
+                                   /* Adjust 80px based on your actual navbar height */
+    overflow: hidden; /* Still needed for video overflow */
+
+    /* REMOVE FLEXBOX STYLES HERE */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: flex-end; */
+    /* align-items: center; */
+
+    color: white; /* Default text color for content that will be over videos or below */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Text shadow for elements over video */
+    text-align: center;
+    padding-top: 0;
+}
+
+/* Ensure other sections still have padding after navbar */
+.section:not(#home) { /* Apply to all sections EXCEPT the hero */
+    padding-top: 100px; /* Adjust based on your navbar's height */
+    padding-bottom: 50px;
+}
+
+/* Reset padding for the home section itself if it applies general .section styles */
+#home.hero-section {
+    padding-top: 0;
+}
+
+.video-slideshow {
+    position: relative; /* Changed to relative so it takes up space in the document flow */
+    width: 100%;
+    height: 60vh; /* Set a specific height for the video area (e.g., 60% of viewport height) */
+                 /* Adjust this value as needed. */
+    overflow: hidden; /* Ensure videos don't spill out */
+    padding-top: 80px; /* Push it down below the fixed navbar. Adjust this value! */
+                       /* It should be the height of your navbar + a bit of margin if desired. */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%; /* Revert width/height to auto to let object-fit control better */
+    height: 100%;
+    z-index: 1; /* Video is behind overlay and content */
+    transform: translate(-50%, -50%);
+
+    /* Reverting to 'cover' as it's typically better for background fill. */
+    /* If you want to see MORE of the video, 'cover' is still the way to go; */
+    /* the "zoom" feeling often relates to the video's original framing or aspect ratio. */
+    /* 'contain' will add black bars if the aspect ratios don't match, which is usually not desired for backgrounds. */
+    object-fit: cover; /* Keeps it covering the full area without distortion */
+
+    /* New styles for slideshow effect */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1s ease-in-out; /* Smooth fade transition */
+}
+
+.hero-video.active {
+    opacity: 1; /* Only active video is visible */
+}
+
+/* Ensure the overlay and content are above the entire slideshow container */
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2; /* Overlay is above video */
+}
+
+.hero-content {
+    position: relative; /* Changed to relative so it flows below the video-slideshow */
+    width: 100%;
+    padding: 40px 20px; /* Add padding top/bottom/sides */
+    background-color: #333; /* Give it a background color so it's not transparent */
+                             /* Use a color that fits your site's palette */
+    color: white; /* Ensure text is visible on the new background */
+    z-index: 10; /* Ensure it's above any lingering elements if needed */
+    text-shadow: none; /* Remove text shadow as it's no longer over video */
+}
+
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    max-width: 100%;
+    padding: 0;
+}
+
+/* Adjust padding for the button to ensure it looks good */
+.hero-button {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 992px) {
+    .video-slideshow {
+        height: 50vh; /* Adjust video height for smaller screens */
+    }
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    .hero-content {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .video-slideshow {
+        height: 40vh; /* Adjust video height for very small screens */
+        padding-top: 60px; /* Smaller padding for smaller navbar */
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .hero-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .hero-content {
+        padding: 20px 15px;
+    }
+}
