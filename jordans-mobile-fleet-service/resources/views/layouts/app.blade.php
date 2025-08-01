@@ -31,7 +31,6 @@
     <footer class="main-footer">
         <div class="footer-content">
             <p>&copy; {{ date('Y') }} Jordans Mobile Fleet Service. All rights reserved.</p>
-            <p>Built with &#10084; in Woodstock, Ontario, Canada.</p>
         </div>
     </footer>
 
