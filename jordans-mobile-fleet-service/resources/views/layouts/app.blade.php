@@ -58,6 +58,7 @@
     <footer class="main-footer">
         <div class="footer-content">
             <p>&copy; {{ date('Y') }} Jordans Mobile Fleet Service. All rights reserved.</p>
+            <p><a href="https://www.instagram.com/jordans_mobile" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> jordans_mobile</a></p>
         </div>
     </footer>
 

@@ -278,7 +278,7 @@ body {
 }
 
 .contact-card {
-    background-color: var(--grey);
+    background-color: var(--black);
     border-radius: 10px;
     padding: 30px 20px;
     flex: 1 1 calc(33.333% - 40px);
@@ -317,6 +317,20 @@ body {
     padding: 30px 20px;
     text-align: center;
     margin-top: 50px;
+}
+
+.main-footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer a:hover {
+    color: var(--light-orange);
+}
+
+.main-footer i {
+    margin-right: 5px;
 }
 
 /* Button Styles */
