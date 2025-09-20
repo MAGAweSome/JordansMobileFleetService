@@ -29,13 +29,27 @@
                 <img src="{{ asset('images/logo.png') }}" alt="Jordans Mobile Fleet Service Logo" class="logo">
             </a>
         </div>
+        <ul class="desktop-nav">
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('sales') }}">Sales</a></li>
+            <li><a href="{{ route('company') }}">Company</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
+        </ul>
+        <div class="hamburger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </nav>
+
+    <div class="mobile-nav">
         <ul>
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('sales') }}">Sales</a></li>
             <li><a href="{{ route('company') }}">Company</a></li>
             <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
-    </nav>
+    </div>
 
     @yield('content')
 
@@ -44,6 +58,23 @@
             <p>&copy; {{ date('Y') }} Jordans Mobile Fleet Service. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                hamburgerMenu.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
