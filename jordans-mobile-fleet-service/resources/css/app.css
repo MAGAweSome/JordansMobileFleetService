@@ -311,6 +311,71 @@ body {
     text-decoration: underline;
 }
 
+/* Contact Form Styles */
+.contact-form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--grey);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.contact-form label .required {
+    color: var(--light-orange);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 10px;
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    background-color: white;
+    color: var(--black);
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive adjustments for Contact Form */
+@media (max-width: 600px) {
+    .contact-form-container {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form textarea {
+        width: calc(100% - 10px); /* Adjust for smaller padding */
+    }
+}
+
 .main-footer {
     background-color: var(--black);
     color: white;

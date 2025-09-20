@@ -47,18 +47,41 @@
 
         <div class="service-details-block">
             <p>
-                <strong>Service Area:</strong> Serving Woodstock, Ontario, Canada, and surrounding areas.
+                <strong>Service Area:</strong> Serving Norwich, Ontario, Canada, and surrounding areas.
             </p>
-            <p>
+            <!-- <p>
                 <strong>Business Hours:</strong><br>
                 Monday - Friday: 7:00 AM - 6:00 PM<br>
                 Saturday: 9:00 AM - 3:00 PM<br>
                 Sunday: Emergency Services Only
-            </p>
+            </p> -->
         </div>
 
-        <div class="contact-form-placeholder">
-            <p>We will add a contact form here soon!</p>
+        <div class="contact-form-container">
+            <form action="{{ route('contact.send') }}" method="POST" class="contact-form">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Telephone</label>
+                    <input type="tel" id="telephone" name="telephone">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message <span class="required">*</span></label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="button">Send Message</button>
+            </form>
         </div>
     </section>
 @endsection
