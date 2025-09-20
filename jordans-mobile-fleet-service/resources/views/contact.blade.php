@@ -26,14 +26,14 @@
                 </p>
             </div>
 
-            <div class="contact-card">
+            <!-- <div class="contact-card">
                 <div class="contact-icon-wrapper">
                     <i class="fas fa-user-tie"></i> </div>
                 <h3>Rick (Services Writer)</h3>
                 <p class="contact-detail">
                     <a href="tel:+12268831969">(226) 883-1969</a>
                 </p>
-            </div>
+            </div> -->
 
             <div class="contact-card contact-email-card">
                 <div class="contact-icon-wrapper">

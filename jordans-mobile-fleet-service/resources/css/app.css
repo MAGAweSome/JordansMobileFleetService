@@ -299,7 +299,18 @@ body {
     font-size: 3em;
 }
 
-/* Footer Styles */
+.contact-card p.contact-detail a {
+    color: var(--light-orange); /* Use light orange for clickable links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-card p.contact-detail a:hover {
+    color: var(--dark-orange); /* Darker orange on hover */
+    text-decoration: underline;
+}
+
 .main-footer {
     background-color: var(--black);
     color: white;
