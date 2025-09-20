@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="contact-hero" class="hero-section">
+    <section id="contact-hero" class="hero-section" style="background-image: url('{{ asset('images/contact_image.png') }}');">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Contact Us</h1>
             <p>Ready to experience the convenience and reliability of on-site fleet service?</p>
