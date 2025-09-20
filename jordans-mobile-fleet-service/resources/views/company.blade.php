@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="company-hero" class="hero-section">
+    <section id="company-hero" class="hero-section hero-video-section">
+        <div class="video-slideshow">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="{{ asset('videos/tools_closeup.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>About Jordans Mobile Fleet Service</h1>
             <p>Your trusted partner for convenient, expert truck and trailer repair.</p>

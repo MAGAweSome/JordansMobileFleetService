@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="sales-hero" class="hero-section">
+    <section id="sales-hero" class="hero-section hero-video-section">
+        <div class="video-slideshow">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="{{ asset('videos/calipers.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Our Services</h1>
             <p>Comprehensive services to keep your fleet operational.</p>
