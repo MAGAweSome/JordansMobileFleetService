@@ -6,7 +6,6 @@ body {
     scroll-behavior: smooth;
     background-color: var(--dark-grey);
     color: white;
-    padding-top: 80px; /* Add padding to account for fixed navbar */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -14,6 +13,7 @@ body {
 
 .site-container {
     flex: 1;
+    padding-top: 80px; /* Add padding to account for fixed navbar */
 }
 
 /* Navbar Styles */
