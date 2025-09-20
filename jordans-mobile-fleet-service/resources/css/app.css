@@ -1,3 +1,4 @@
+/* General Body Styles */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -8,6 +9,7 @@ body {
     padding-top: 80px; /* Add padding to account for fixed navbar */
 }
 
+/* Navbar Styles */
 .navbar {
     background-color: var(--black);
     padding: 1em;
@@ -37,6 +39,17 @@ body {
     margin: 0 10px;
 }
 
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: var(--light-orange);
+}
+
 /* Hamburger Menu */
 .hamburger-menu {
     display: none;
@@ -51,39 +64,6 @@ body {
     transition: all 0.3s ease;
 }
 
-.mobile-nav {
-    display: none;
-    position: fixed;
-    top: 80px; /* Height of the navbar */
-    left: 0;
-    width: 100%;
-    background-color: var(--black);
-    padding: 20px 0;
-    z-index: 999;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-.mobile-nav ul li {
-    margin: 15px 0;
-}
-
-.mobile-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.mobile-nav.active {
-    display: block;
-}
-
 .hamburger-menu.active .line:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -96,77 +76,7 @@ body {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-@media (max-width: 768px) {
-    .navbar ul.desktop-nav {
-        display: none;
-    }
-
-    .hamburger-menu {
-        display: block;
-    }
-
-    .mobile-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 998; /* Below the navbar */
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .mobile-nav.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .mobile-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-    }
-
-    .mobile-nav ul li {
-        margin: 20px 0;
-    }
-
-    .mobile-nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 2em;
-        font-weight: bold;
-    }
-}
-
-.navbar ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    color: var(--light-orange);
-}
-
-/* Hero Section Styles */
-.hero-section {
-    position: relative;
-    padding: 150px 20px 100px;
-    padding-top: 80px; /* Add padding to account for fixed navbar */
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    color: white;
-}
-
+/* Mobile Navigation */
 .mobile-nav {
     position: fixed;
     top: 0;
@@ -183,6 +93,39 @@ body {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+.mobile-nav.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav ul li {
+    margin: 20px 0;
+}
+
+.mobile-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    padding: 100px 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
 .hero-section .hero-content h1 {
     font-size: 3.5em;
     margin-bottom: 10px;
@@ -197,7 +140,6 @@ body {
 
 /* Hero Video Section */
 .hero-video-section {
-    position: relative;
     overflow: hidden;
 }
 
@@ -229,7 +171,6 @@ body {
     position: relative;
     z-index: 1;
 }
-
 
 /* Section Styles */
 .section {
@@ -361,37 +302,21 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
+    .navbar ul.desktop-nav {
+        display: none;
     }
 
-    .navbar-brand {
-        padding: 10px 0;
+    .hamburger-menu {
+        display: block;
     }
 
-    .navbar ul {
-        margin-top: 10px;
-    }
-
-    .hero-section .hero-content h1 {
-        font-size: 2.5em;
-    }
-
-    .hero-section .hero-content p {
-        font-size: 1.2em;
-    }
-
-    .about-card {
+    .about-card,
+    .contact-card {
         flex: 1 1 100%;
         max-width: 100%;
     }
 
     .services-columns ul {
         max-width: 90%;
-    }
-
-    .contact-card {
-        flex: 1 1 100%;
-        max-width: 100%;
     }
 }
