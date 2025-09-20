@@ -23,35 +23,37 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <a href="{{ route('home') }}">
-                <img src="{{ asset('images/logo.png') }}" alt="Jordans Mobile Fleet Service Logo" class="logo">
-            </a>
-        </div>
-        <ul class="desktop-nav">
-            <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('sales') }}">Sales</a></li>
-            <li><a href="{{ route('company') }}">Company</a></li>
-            <li><a href="{{ route('contact') }}">Contact</a></li>
-        </ul>
-        <div class="hamburger-menu">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </nav>
+    <div class="site-container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('images/logo.png') }}" alt="Jordans Mobile Fleet Service Logo" class="logo">
+                </a>
+            </div>
+            <ul class="desktop-nav">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('sales') }}">Sales</a></li>
+                <li><a href="{{ route('company') }}">Company</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
 
-    <div class="mobile-nav">
-        <ul>
-            <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('sales') }}">Sales</a></li>
-            <li><a href="{{ route('company') }}">Company</a></li>
-            <li><a href="{{ route('contact') }}">Contact</a></li>
-        </ul>
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('sales') }}">Sales</a></li>
+                <li><a href="{{ route('company') }}">Company</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+
+        @yield('content')
     </div>
-
-    @yield('content')
 
     <footer class="main-footer">
         <div class="footer-content">
