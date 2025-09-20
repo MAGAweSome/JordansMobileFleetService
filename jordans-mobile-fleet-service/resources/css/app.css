@@ -106,6 +106,17 @@ body {
 
 .mobile-nav ul li {
     margin: 20px 0;
+    position: relative;
+}
+
+.mobile-nav ul li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--light-orange), transparent);
 }
 
 .mobile-nav ul li a {
