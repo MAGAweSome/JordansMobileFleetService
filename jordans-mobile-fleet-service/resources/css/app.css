@@ -82,7 +82,7 @@ body {
     position: absolute;
     top: 80px; /* Height of the navbar */
     right: 0;
-    width: 200px;
+    width: 100%;
     background-color: var(--black);
     padding: 20px;
     z-index: 999;
@@ -93,7 +93,7 @@ body {
 }
 
 .mobile-nav.active {
-    opacity: 1;
+    opacity: 95%;
     visibility: visible;
 }
 
