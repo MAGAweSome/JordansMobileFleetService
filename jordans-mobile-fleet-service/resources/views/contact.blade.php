@@ -62,23 +62,23 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Name <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" placeholder="First Last" required>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="telephone">Telephone</label>
                     <input type="tel" id="telephone" name="telephone">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="email">Email <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="example@example.com" required>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="location">Location</label>
                     <input type="text" id="location" name="location">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="message">Message <span class="required">*</span></label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder="Your message here..." required></textarea>
                 </div>
                 <button type="submit" class="button">Send Message</button>
             </form>
