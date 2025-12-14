@@ -9,9 +9,9 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Welcome to Jordans Mobile Fleet Service!</h1>
-            <p>Your reliable partner for on-site trucking solutions.</p>
-            <a href="{{ route('contact') }}" class="button hero-button">Get a Free Quote!</a>
+            <h1>Jordan's Mobile Fleet Service: Your Trusted Partner for On-Site Repair.</h1>
+            <p>Mobile truck & trailer repair — fast, professional, and on-location to minimize your downtime.</p>
+            <a href="{{ route('contact') }}" class="button hero-button">Request Service Quote</a>
         </div>
     </section>
 @endsection

@@ -1,0 +1,16 @@
+﻿Restyle UI & improve site UX: hero, navbar, services, contact, README
+
+Problem:
+- The site used a generic/dated UI: hero video lacked readable overlay, navbar title could jumble on smaller screens, service items appeared as interactive buttons causing confusion, and the contact form and README did not present a clear, accessible user flow or developer onboarding info.
+
+Solution:
+- Updated styling and layout across the frontend:
+  - resources/css/app.css: added theme variables, hero video overlay, .narrow-wrapper, responsive navbar centering and truncation, .service-pill restyled to non-interactive tinted pills, .contact-form-card and improved form input styles.
+  - resources/views/layouts/app.blade.php: adjusted navbar/layout, included font and footer refinements.
+  - resources/views/sales.blade.php: rendered services as <span class="service-pill"> bubbles (non-clickable) and reorganized columns.
+  - resources/views/home.blade.php, resources/views/company.blade.php, resources/views/contact.blade.php: updated hero/CTA, content layout, contact card and embedded map.
+  - README.md: replaced generic Laravel README with a project-specific README documenting recent UI changes, setup steps, and key files.
+  - Tracked work in the todo list for traceability.
+
+Benefit:
+- Improves readability and visual hierarchy (hero and overlays), prevents UX confusion by making service items non-clickable while keeping a pill-like appearance, strengthens CTAs and contact accessibility (click-to-call), and speeds developer onboarding with an up-to-date README.md. Overall results: clearer user paths, better mobile behavior, and easier future maintenance.

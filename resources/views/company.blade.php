@@ -15,9 +15,9 @@
     </section>
 
     <section id="about-us" class="section">
-        <h2>About Us</h2>
-        <div class="about-container">
-            <div class="about-intro">
+        <div class="container narrow-wrapper text-center">
+            <h2>About Us</h2>
+            <div class="about-intro" style="max-width:900px; margin:0 auto 18px;">
                 <p>
                     Welcome to <strong>Jordans Mobile Fleet Service</strong>, your trusted partner for convenient,
                     expert truck and trailer repair right here in Southern Ontario. As a new, local, and
@@ -57,11 +57,13 @@
                 </div>
             </div>
 
-            <div class="about-cta">
+            <div class="about-cta" style="text-align:center; margin-top:10px;">
                 <p>
                     Experience the difference a dedicated, mobile mechanic can make for your fleet.
                 </p>
-                <a href="{{ route('contact') }}" class="button">Contact Jordan Today!</a>
+                <div style="text-align:center; margin-top:10px;">
+                    <a href="{{ route('contact') }}" class="button">Contact Jordan Today!</a>
+                </div>
             </div>
         </div>
     </section>
