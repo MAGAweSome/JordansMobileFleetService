@@ -377,8 +377,8 @@ body {
 /* Contact Form Styles */
 
 .contact-form-container {
-    max-width: 720px;
-    margin: 30px auto;
+    max-width: 1440px;
+    /* keep container constraints but ensure full-width form inside */
     padding: 0;
 }
 
@@ -388,6 +388,10 @@ body {
     border-radius: 10px;
     padding: 18px;
     box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+    /* Fill the available wrapper width so the form matches map/cards */
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
 }
 
 .contact-form .form-group {
@@ -499,4 +503,171 @@ body {
     .hero-section { min-height: 48vh; }
     .hero-section .hero-content h1 { font-size: 1.6rem; }
     .about-card, .contact-card { width: 100%; }
+}
+
+/* Make the site span most of the device width on smaller desktops / laptops
+   (targeting viewports 1440px and below). This expands the main container
+   and narrow-wrapper to 95% width so forms, hero and content feel less
+   boxed on 1440p laptop screens. */
+@media (max-width: 1440px) {
+    .container,
+    .narrow-wrapper,
+    .contact-form-container,
+    .contact-form-card {
+        max-width: none;
+        width: 95%;
+        margin: 0 auto;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Allow hero content to expand within the wider container */
+    .hero-section .hero-content {
+        max-width: 100%;
+        width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Make the contact form use available width on these screens */
+    .contact-form-container { max-width: 100%; }
+    .contact-form-card { width: 100%; }
+
+    /* Ensure about-cards and grid based areas spread nicely */
+    .about-cards { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}
+
+/* Footer stacking for small screens: stack and reorder items for <=885px */
+@media (max-width: 885px) {
+    .main-footer .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* The first child is the row with brand / links / contact — stack its children */
+    .main-footer .container > div:first-child {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* Make each of the three inner blocks full-width and centered */
+    .main-footer .container > div:first-child > div {
+        min-width: auto !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* Reorder: brand (first), links (second), instagram (third), contact details (fourth) */
+    .main-footer .container > div:first-child > div:nth-child(1) { order: 1; }
+    .main-footer .container > div:first-child > div:nth-child(2) { order: 2; }
+    .main-footer > .container > div:nth-child(2) { order: 3; } /* instagram block */
+    .main-footer .container > div:first-child > div:nth-child(3) { order: 4; }
+
+    /* Add spacing for the instagram row */
+    .main-footer > .container > div:nth-child(2) {
+        margin-top: 4px;
+    }
+}
+
+/* Strong final override: ensure contact form container exactly matches contact-grid
+   width at <=1440px. Uses !important to avoid conflicts with inline styles. */
+@media (max-width: 1440px) {
+    .contact-grid,
+    .contact-form-container,
+    .contact-form-card,
+    .container div[style*="max-width:720px"],
+    .container div[style*="width:100%; max-width:720px"] {
+        width: 95% !important;
+        max-width: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ensure inner form fills the card */
+    .contact-form-card { width: 100% !important; }
+    .contact-form { width: 100% !important; }
+}
+
+/* Ensure contact page inner wrapper respects the 95% width at <=1440px
+   Override inline max-width:720px used in the template so forms and maps
+   expand to match the contact cards and overall container width. */
+@media (max-width: 1440px) {
+    /* Target the specific inline-styled wrapper used around the form */
+    .container div[style*="max-width:720px"] {
+        max-width: none !important;
+        width: 95% !important;
+        margin: 0 auto !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    /* Ensure the iframe map wrapper stretches to available width */
+    .container div[style*="height:320px"] {
+        width: 95% !important;
+        max-width: none !important;
+        margin: 0 auto;
+    }
+}
+
+/* Ensure contact cards, form and map use identical widths on narrower screens
+   and make footer link list centered when stacked at <=885px. */
+@media (max-width: 1440px) {
+    /* contact grid and cards fill available width */
+    .contact-grid {
+        width: 95% !important;
+        max-width: none !important;
+        margin: 0 auto 18px;
+        gap: 18px;
+        justify-items: stretch;
+    }
+
+    .contact-card {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* contact form container & card should match contact cards and map */
+    .contact-form-container,
+    .contact-form-card,
+    .contact-grid,
+    .container div[style*="height:320px"] {
+        width: 95% !important;
+        max-width: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    /* Make sure the form itself stretches to the card width */
+    .contact-form { width: 100%; }
+    .contact-form input, .contact-form textarea { width: 100%; }
+}
+
+@media (max-width: 885px) {
+    /* Center footer link list when stacked */
+    .main-footer .container > div:first-child > div:nth-child(2) {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 18px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .main-footer .container > div:first-child > div:nth-child(2) a {
+        display: inline-block;
+        margin: 6px 8px;
+    }
+
+    /* Also ensure instagram row is centered */
+    .main-footer > .container > div:nth-child(2) { text-align: center; }
 }
