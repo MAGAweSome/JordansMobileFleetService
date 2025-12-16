@@ -16,27 +16,50 @@
     </section>
     <!-- Image slideshow: 3-up with larger center and auto-rotate -->
     @php
-        // Gather images from public/images and exclude brand/logo images
-        $imageFiles = glob(public_path('images/*.{jpg,jpeg,png,gif,webp}'), GLOB_BRACE) ?: [];
-        $images = array_map(function($path) { return basename($path); }, $imageFiles);
-        // Remove any logo files (logo.png, logo@2x.png, etc.) and files that start with 'logo'
-        $images = array_values(array_filter($images, function($n) {
-            return !preg_match('/^logo/i', $n);
-        }));
+    // Bypassing glob() because it fails on some hosting environments.
+    // We manually list the image file names known to be in public/images/
+    $imageFileNames = [
+        'mobile_repair_loader_boom_truck.jpg',
+        'heavy_duty_cat_engine_pallet.jpg',
+        'field_service_excavator_repair.jpg',
+        'truck_chassis_engine_swap.jpg',
+        'engine_turbo_closeup.jpg',
+        'truck_bay_engine_out.jpg',
+        'tandem_truck_service_call.jpg',
+        'excavator_on_site_service.jpg',
+        'crane_lifting_truck_cab.jpg',
+        'jordan_with_cat_diesel_power.jpg',
+        'mobile_service_truck_shop_exterior.jpg',
+        'in_shop_truck_engine_repair.jpg',
+    ];
 
-        // If fewer than 3 images, duplicate the list until we have at least 3
-        while(count($images) > 0 && count($images) < 3) {
-            $images = array_merge($images, $images);
-        }
+    // Ensure we have enough items for the carousel minimum (3) by looping the list
+    while (count($imageFileNames) < 3) {
+        $imageFileNames = array_merge($imageFileNames, $imageFileNames);
+    }
+    
+    // Prepare the final JS-friendly array of objects with correct production URLs
+    // The asset() helper guarantees the correct path is rendered.
+    $jsImages = array_map(function($n) { 
+        // We use a simple capitalized title for the alt text
+        $altText = ucwords(str_replace(['_', '.jpg'], [' ', ''], $n));
+        
+        return [
+            'src' => asset('images/'.$n), 
+            'alt' => $altText
+        ]; 
+    }, $imageFileNames);
 
-        // Prepare JS-friendly array of objects with asset URLs
-        $jsImages = array_map(function($n){ return ['src' => asset('images/'.$n), 'alt' => '']; }, $images);
-    @endphp
+    // If, for some reason, the file names are bad, we still ensure the array isn't empty
+    if (empty($jsImages)) {
+        $jsImages[] = ['src' => asset('images/default_placeholder.jpg'), 'alt' => 'Default Image'];
+    }
+@endphp
 
-    @if(count($images) > 0)
+    @if(count($jsImages) > 0)
         {{-- Preload slideshow images so they render quickly --}}
-        @foreach($images as $img)
-            <link rel="preload" as="image" href="{{ asset('images/'.$img) }}">
+        @foreach($jsImages as $img)
+            <link rel="preload" as="image" href="{{ $img['src'] }}">
         @endforeach
 
         <section class="jmfs-gallery">
@@ -138,12 +161,12 @@
                     slideItem.className = 'slide-item start-right';
                     slideItem.setAttribute('data-index', index);
 
-                    const img = document.createElement('img');
-                    img.src = image.src;
-                    img.alt = image.alt || '';
-                    img.onerror = function(){ this.src = 'https://placehold.co/300x380/1a1a1a/cccccc?text=Image'; };
+                    // Use CSS background-image with the server-generated asset URL
+                    slideItem.style.backgroundImage = `url('${image.src}')`;
+                    slideItem.style.backgroundSize = 'cover';
+                    slideItem.style.backgroundPosition = 'center center';
+                    slideItem.setAttribute('aria-label', image.alt || 'Gallery image');
 
-                    slideItem.appendChild(img);
                     carousel.appendChild(slideItem);
                     slideElements.push(slideItem);
                 });
