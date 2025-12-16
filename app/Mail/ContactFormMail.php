@@ -3,8 +3,8 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -13,12 +13,13 @@ class ContactFormMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * The contact form data (name, email, message).
+     * @var array
+     */
     public $data;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -29,7 +30,13 @@ class ContactFormMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Contact Form Submission',
+            // Sets the subject line with the sender's name
+            subject: 'New Service Quote Request from ' . $this->data['name'],
+            
+            // Sets the 'Reply-To' header to the user's email for easy response
+            replyTo: [
+                new Address($this->data['email'], $this->data['name']),
+            ],
         );
     }
 
@@ -39,15 +46,16 @@ class ContactFormMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.contact-form',
+            // Specifies the Blade file to use for the email's body (the admin template)
+            view: 'emails.contact-form',
+            with: [
+                'name' => $this->data['name'],
+                'user_email' => $this->data['email'],
+                'user_message' => $this->data['message'],
+            ]
         );
     }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
     public function attachments(): array
     {
         return [];
