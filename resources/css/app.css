@@ -576,6 +576,69 @@ body {
     }
 }
 
+/* Image slideshow (homepage) */
+.image-slideshow-section {
+    padding: 28px 0 44px;
+}
+.slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.slideshow {
+    position: relative;
+}
+.slideshow {
+    --slideshow-duration: 700ms;
+}
+.slideshow .slide {
+    flex: 0 0 33.3333%;
+    display: flex;
+    justify-content: center;
+    transition: transform var(--slideshow-duration) cubic-bezier(.22,.9,.3,1), opacity var(--slideshow-duration) ease;
+    transform-origin: center center;
+    transform: translate3d(0,0,0);
+    opacity: 1;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+.slideshow .slide img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    display: block;
+    will-change: transform, opacity;
+}
+/* default positions (visible three panes) */
+.slideshow .slide.left { transform: translate3d(-110%,0,0) scale(.94); opacity: .85 }
+.slideshow .slide.center { transform: translate3d(0,0,0) scale(1.06); z-index: 2; }
+.slideshow .slide.right { transform: translate3d(110%,0,0) scale(.94); opacity: .85 }
+
+/* animation target: slide towards the left so right becomes center */
+.slideshow.animating .slide.left { transform: translate3d(-220%,0,0) scale(.9); opacity: .6 }
+.slideshow.animating .slide.center { transform: translate3d(-110%,0,0) scale(.98); opacity: .95 }
+.slideshow.animating .slide.right { transform: translate3d(0,0,0) scale(1.06); opacity: 1; z-index: 3 }
+
+@media (max-width: 992px) {
+    .slideshow { gap: 12px; }
+    .slideshow .slide img { height: 180px; }
+    .slideshow .slide.center { flex: 1.4 1 0; }
+}
+
+@media (max-width: 720px) {
+    .slideshow { flex-direction: column; gap: 12px; }
+    .slideshow .slide { width: 100%; }
+    .slideshow .slide img { height: 160px; }
+    .slideshow .slide.center { transform: scale(1); }
+}
+
 /* Strong final override: ensure contact form container exactly matches contact-grid
    width at <=1440px. Uses !important to avoid conflicts with inline styles. */
 @media (max-width: 1440px) {
