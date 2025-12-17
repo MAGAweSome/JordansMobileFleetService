@@ -341,6 +341,67 @@ body {
     margin-bottom: 28px;
 }
 
+/* Force contact cards to stack vertically on narrower screens */
+@media (max-width: 840px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Smaller text and tighter icon sizing to prevent overflow on very small devices */
+@media (max-width: 460px) {
+    .contact-card {
+        padding: 18px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+    .contact-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+    }
+
+    .contact-card p,
+    .contact-card p.contact-detail,
+    .contact-card p.contact-detail a {
+        font-size: 0.95rem;
+        margin: 6px 0;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    .contact-icon-wrapper {
+        width: 56px;
+        height: 56px;
+        font-size: 1.6em;
+    }
+}
+
+/* For very narrow devices (443px and below) force the contact detail to stay on one line
+   by reducing font-size and disabling wrapping. This prevents orphaned single characters
+   like the trailing "m" on a wrapped ".com". If it still doesn't fit, it will show
+   an ellipsis rather than breaking onto a new line. */
+@media (max-width: 444px) {
+    .contact-card {
+        padding: 14px;
+    }
+
+    .contact-card p.contact-detail,
+    .contact-card p.contact-detail a {
+        font-size: 0.80rem; /* smaller so long emails fit on one line */
+        white-space: nowrap; /* force single-line */
+        overflow: hidden;
+        text-overflow: ellipsis; /* fallback if still too long */
+        display: inline-block; /* allow text-overflow to apply */
+        max-width: 100%;
+    }
+
+    /* slightly shrink the icon so spacing works better on very small widths */
+    .contact-icon-wrapper { width: 48px; height: 48px; font-size: 1.4em; }
+}
+
 .contact-card {
     background-color: var(--black);
     border-radius: 10px;

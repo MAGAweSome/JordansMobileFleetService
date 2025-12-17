@@ -70,4 +70,36 @@ document.addEventListener('DOMContentLoaded', () => {
     //         }
     //     });
     // });
+    
+    // Improve wrapping for long contact details (emails / phone strings)
+    // Insert zero-width space after dots, at-signs and other punctuation
+    // so browsers can break lines at sensible points and avoid lone-character lines.
+    document.addEventListener('DOMContentLoaded', function () {
+        try {
+            var selectors = document.querySelectorAll('.contact-card p.contact-detail a, .contact-card p.contact-detail');
+            selectors.forEach(function (el) {
+                // Skip if already processed
+                if (el.dataset.wrapped === '1') return;
+                var text = el.innerHTML;
+                // Insert zero-width space after commonly allowed break points
+                // (dot, @, hyphen, underscore, slash)
+                text = text.replace(/\./g, '.\u200B')
+                           .replace(/@/g, '@\u200B')
+                           .replace(/-/g, '-\u200B')
+                           .replace(/_/g, '_\u200B')
+                           .replace(/\//g, '/\u200B');
+
+                // If a very long unbroken sequence exists, insert soft breaks every 12 chars
+                text = text.replace(/([^\s]{24,})/g, function (m) {
+                    return m.replace(/(.{12})/g, '$1\u200B');
+                });
+
+                el.innerHTML = text;
+                el.dataset.wrapped = '1';
+            });
+        } catch (e) {
+            // fail gracefully
+            console && console.warn && console.warn('contact-wrap script error', e);
+        }
+    });
 });
